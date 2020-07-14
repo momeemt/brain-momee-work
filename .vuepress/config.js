@@ -27,16 +27,24 @@ module.exports = {
     ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
     ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#BCA18E' }],
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
-    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+    ['link', { rel: 'stylesheet', href: '/main.css' }],
   ],
   config: (md) => {
     md.options.linkify = true
+  },
+  markdown: {
+    lineNumbers: true,
+    linkify: true,
+    extendMarkdown: md => {
+      md.use(require('markdown-it-task-lists'))
+      md.use(require('markdown-it-footnote'))
+    }
   },
   themeConfig: {
     sidebar: sidebarArray
   },
   plugins: [
-    'markdown-it-task-lists',
     '@vuepress/back-to-top',
     '@vuepress/last-updated',
     '@vuepress/pwa',
