@@ -19,7 +19,15 @@ module.exports = {
   title: 'Brain',
   description: 'Momeemt\'s brain',
   head: [
+    ['link', { rel: 'icon', href: '/icon.png' }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#BCA18E' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
+    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#BCA18E' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
   config: (md) => {
     md.options.linkify = true
@@ -31,6 +39,10 @@ module.exports = {
     'markdown-it-task-lists',
     '@vuepress/back-to-top',
     '@vuepress/last-updated',
-    '@vuepress/pwa'
+    '@vuepress/pwa',
+    {
+      serviceWorker: true,
+      updatePopup: true
+    }
   ]
 }
